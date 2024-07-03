@@ -14,7 +14,9 @@ const colorStates = {
 // we want to make clickable. Without JavaScript, clicking on these heart shapes
 // does nothing. Uncomment the code and refresh the demo page. 
 
-// const articleHearts = document.querySelectorAll(".like-glyph");
+
+//Once you uncomment the line of code below and refresh the page, you can use the console to verify that the articleHearts variable contains a nodeList with five elements.
+  const articleHearts = document.querySelectorAll(".like-glyph");
 
 function likeCallback(e) {
   const heart = e.target;
@@ -24,10 +26,18 @@ function likeCallback(e) {
       // Here we're using Pillar 1 (DOM Manipulation) to update the screen and
       // mimicking Pillar 3 (Server Communication) to only update the screen if
       // the sending of information to the server succeeds.
+
+     //find the comments describing Step 2, which sets up the mock server communication (our third pillar): 
+     /*Once you've uncommented out the code and refreshed the page,
+      try clicking one of the "Like" buttons again. 
+      You'll see that it's still not working. That's because we've uncommented the code that mocks our communication with the server, 
+      but we haven't yet told JavaScript to listen for the "click" event.
+        */
+
       alert("You notified the server!");
-      // alert(serverMessage);
-      // heart.innerText = glyphStates[heart.innerText];
-      // heart.style.color = colorStates[heart.style.color];
+         alert(serverMessage);
+         heart.innerText = glyphStates[heart.innerText];
+         heart.style.color = colorStates[heart.style.color];
     })
     .catch(function(error) {
       alert("Something went wrong!");
@@ -37,10 +47,12 @@ function likeCallback(e) {
 // STEP 3: In order for the call to the server and the update of the screen to
 // work, we need to add a click event listener to the elements we identified in
 // STEP 1. That's Pillar 2, event handling. Uncomment this code:
+//Find Step 3 in the commented code. It's time to bring in the second pillar, events:
 
-// for (const glyph of articleHearts) {
-//   glyph.addEventListener("click", likeCallback);
-// }
+
+    for (const glyph of articleHearts) {
+     glyph.addEventListener("click", likeCallback);
+}
 
 // STEP 4: 
 
